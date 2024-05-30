@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #111;
+  --secondary: #fff;
+  --primary-button: #1d1e22;
+  --primary-button-fg: var(--secondary);
+  --secondary-button: #a0abb3;
+  --secondary-button-fg: var(--secondary);
+  --accent: #a82e38;
+
+  --outer: #5c5b6b;
+
+  --primary-radius: 1em;
+}
+
+body {
+  background-color: var(--outer);
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  margin: 0 15%;
+}
+
+.inner,
+.reflection {
+  background-color: var(--secondary);
+  flex-direction: column;
+  border: 1px solid gray;
+  border-top: none;
+}
+.reflection {
+  border: 1px solid gray;
+  height: 2em;
+  --mask: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+
+@media screen and (max-width: 1400px) {
+  body {
+    margin: 0 5%;
+  }
+}
+
+header {
+  position: relative;
+  padding-left: 1em;
+  padding-right: 1em;
+  color: var(--secondary);
+  padding-bottom: 1.4em;
+  border-top-left-radius: var(--primary-radius);
+  border-top-right-radius: var(--primary-radius);
+  overflow: hidden; /* Добавлено для обрезки изображения по краям */
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('top.png'); /* Замените 'path/to/your/image.png' на реальный путь к вашему изображению */
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: var(--primary-radius);
+  border-top-right-radius: var(--primary-radius);
+  z-index: -1; /* Отправить изображение на задний план */
+}
+.search-bar {
+  float: right;
+}
+
+form.search-bar input[type="text"] {
+  color: var(--primary);
+  background: var(--secondary);
+  padding: 0.5em;
+  font-size: 1em;
+  border: 1px solid grey;
+  outline: none;
+  float: left;
+  width: calc(80% - 3px);
+  margin-right: 3px;
+  height: 2.6em; /* Добавлено для соответствия высоте кнопки */
+}
+
+form.search-bar button {
+  float: left;
+  width: 20%;
+  padding: 0;
+  background: var(--secondary);
+  color: var(--primary-button-fg);
+  border: 1px solid grey;
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.6em; /* Добавлено для соответствия высоте поля поиска */
+  box-sizing: border-box; /* Убедитесь, что padding не влияет на размер */
+}
+
+form.search-bar button img.search-icon {
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+}
+
+form.example button:hover {
+  background: var(--secondary-button);
+  color: var(--secondary-button-fg);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1em;
+}
+
+nav {
+  display: flex;
+  gap: 1em;
+}
+
+.nav-button {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+.rtl-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ttb-line {
+  display: flex;
+  flex-direction: column;
+  min-width: 20%;
+  justify-content: flex-start space-evenly;
+  gap: 1em;
+}
+
+.post {
+  width: 100%;
+}
+.post-header {
+  color: var(--secondary-button-fg);
+  background-color: var(--secondary-button);
+  padding: 0.4em;
+  border-top-left-radius: var(--primary-radius);
+  border-top-right-radius: var(--primary-radius);
+}
+
+.post-content {
+  color: var(--secondary);
+  padding: 0.4em;
+  background-color: var(--primary);
+  border-bottom-left-radius: var(--primary-radius);
+  border-bottom-right-radius: var(--primary-radius);
+}
+
+article {
+  display: block;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+article h1 img.icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.3em;
+  vertical-align: middle;
+}
+
+.attribution {
+  background-color: var(--secondary-button);
+  border-bottom-left-radius: var(--primary-radius);
+  border-top-left-radius: var(--primary-radius);
+  margin-top: 0.6em;
+  padding: calc(var(--primary-radius) / 4) 0.6em;
+}
+
+h1 {
+  font-size: 1.6em;
+  font-weight: 600;
+}
